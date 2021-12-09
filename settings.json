@@ -1,0 +1,10 @@
+{
+    "autosave": 8,
+    "colorscheme": "dukedark-tc",
+    "parsecursor": true,
+    "relativeruler": true,
+    "savecursor": true,
+    "saveundo": true,
+    "tabsize": 2,
+    "tabstospaces": true
+}

@@ -1,0 +1,22 @@
+{
+    "Alt-/": "lua:comment.comment",
+    "Alt-T": "command:textfilter title",
+    "Alt-Tab": "command:textfilter listwords",
+    "Alt-l": "command:textfilter lower",
+    "Alt-t": "command:textfilter tabulate",
+    "Alt-u": "command:textfilter upper",
+    "Ctrl-h": "CursorLeft",
+    "Ctrl-j": "CursorDown",
+    "Ctrl-k": "CursorUp",
+    "Ctrl-l": "CursorRight",
+    "Alt-s": "command:textfilter xsel",
+    "Alt-e": "command:textfilter safe_eval.rb",
+    "Ctrl-t": "command:textfilter calcts.rb",
+    "CtrlDown": "ParagraphNext",
+    "CtrlUnderscore": "lua:comment.comment",
+    "CtrlUp": "ParagraphPrevious",
+    "Ctrl-m": "PlayMacro",
+    "Alt-p": "command:textfilter pwd",
+    "Ctrl-p": "command:textfilter paste_files.rb",
+    "Esc": "Quit"
+}
