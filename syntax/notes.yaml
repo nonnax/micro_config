@@ -1,0 +1,34 @@
+filetype: notes
+
+detect:
+    # filename: "(^|\\.|/)(log|dat|jnl)$"
+    header: "^.LOG"
+
+rules:
+      # Numbers
+    # - type: "^[0-9]+.*\\:[0-9]+\\b"
+    # - type: "\\b[0-9]+\\b"
+    # - statement: "^\\w+.*"
+    # - type: "^[[:space:]].*"
+    # - statement: "\\%\\s\\w+.+"
+    #- type: "\\>\\s\\w+.+"  
+    - type: "\\=.*?\\="   
+    - type: "\\b[\\w+]+@([\\w+]+\\.)+[\\w+]{2,4}\\b"
+    - special: "(\\{|\\}|\\(|\\)|\\;|\\]|\\[|`|\\\\|\\$|<|>|!|=|&|\\\\|\\.|\\*|\\/|\\-|\\+)"
+  # special words
+    - special: "\\b(todo|done|note|news|online|chat|email|important|pdax)\\b:"
+    - statement: "\\b(sell)\\b:"
+    - type: "\\b(buy)\\b:"
+# - highlights a section
+    # - comment: "\\-.*?\\-"
+    # - special: "\\*.*?\\*"
+# - highlights a line
+    # - special: "(^|\\s)\\+.+"
+    - special: "\\s\\+{2}.+$"
+    
+# - dims a line
+    - comment: 
+        start: "(^|\\s)\\-{2}"
+        end: "$"
+        rules:
+            - todo: "(TODO|XXX|FIXME):?"
