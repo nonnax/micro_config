@@ -9,7 +9,8 @@
     "Alt-v": "command:textfilter print_split_lines.rb",
     "Alt-t": "command:textfilter tabulate",
     "Alt-u": "command:textfilter print_upper.rb",
-    "Ctrl-h": "CursorLeft",
+    "Ctrl-u": "command:textfilter print_wup_header.rb",
+    "Ctrl-U": "command:textfilter capture_micro.rb",
     "Ctrl-j": "CursorDown",
     "Ctrl-k": "CursorUp",
     "Ctrl-l": "CursorRight",
@@ -21,6 +22,6 @@
     "CtrlUp": "ParagraphPrevious",
     "Ctrl-m": "PlayMacro",
     "Alt-p": "command:textfilter pwd",
-    "Ctrl-p": "command:textfilter paste_files.rb",
+    "Ctrl-p": "command:textfilter lf_selected.rb",
     "Esc": "Quit"
 }

@@ -1,7 +1,8 @@
 filetype: unknown
 
 detect:
-    filename: "\\.(md|mkd|mkdn|markdown)$"
+    # filename: "(^|\\.|/)(log|dat|jnl)$"
+    header: "^---"
 
 rules:
     # Tables (Github extension)
