@@ -1,7 +1,11 @@
 {
     "autosave": 8,
-    "colorscheme": "dukedark-tc",
+    "colorcolumn": 90,
+    "colorscheme": "monokai-dark",
+    "indentchar": "~",
+    "keepautoindent": true,
     "parsecursor": true,
+    "paste": true,
     "relativeruler": true,
     "savecursor": true,
     "saveundo": true,
