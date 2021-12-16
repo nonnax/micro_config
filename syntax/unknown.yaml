@@ -1,7 +1,7 @@
 filetype: unknown
 
 detect:
-    # filename: "(^|\\.|/)(log|dat|jnl)$"
+    filename: "(^|\\.|/)(log|dat|jnl)$"
     header: "^---"
 
 rules:
