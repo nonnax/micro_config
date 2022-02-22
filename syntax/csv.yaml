@@ -1,8 +1,7 @@
-filetype: ruby
+filetype: csv
 
 detect: 
-    filename: "\\.(rb|ru|rake|gemspec)$|^(Gemfile|config.ru|Rakefile|Capfile|Vagrantfile|Guardfile|Appfile|Fastfile|Pluginfile|Podfile)$"
-    header: "^#!.*/(env +)?m?ruby( |$)"
+    filename: "\\.(csv|txt)$"
 
 rules:
     - comment.bright:
@@ -16,7 +15,6 @@ rules:
         rules:
             - todo: "(XXX|TODO|FIXME|BUG|\\?\\?\\?)"
 
-    - statement: "\\b(BEGIN|END|alias|and|begin|break|case|class|def|defined\\?|do|else|elsif|end|ensure|for|if|in|module|next|nil|not|or|private|protected|public|redo|rescue|retry|return|self|super|then|undef|unless|until|when|while|yield)\\b"
     - constant: "(\\$|@|@@)?\\b[A-Z]+[0-9A-Z_a-z]*"
     - constant.number: "(?i)\\b0x[0-9a-f][0-9a-f_]*\\b"
     - constant.number: "(?i)\\b0b[01][01_]*\\b"
@@ -60,9 +58,4 @@ rules:
     - constant.bool: "\\b(true|false|nil|TRUE|FALSE|NIL)\\b"
     - symbol.operator: "[-+/*=<>!~%&|^]|\\b:"
     - symbol.brackets: "([(){}]|\\[|\\])"
-    - constant.macro:
-        start: "<<-?'?EOT'?"
-        end: "^EOT"
-        rules: []
 
-    - preproc.shebang: "^#!.+?( |$)"

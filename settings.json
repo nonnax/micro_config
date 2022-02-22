@@ -1,14 +1,17 @@
 {
+    "*.cr": {
+        "tabsize": 2
+    },
+    "*.rb": {
+        "tabsize": 2
+    },
     "autosave": 8,
-    "colorcolumn": 90,
-    "colorscheme": "monokai-dark",
-    "indentchar": "~",
-    "keepautoindent": true,
+    "colorscheme": "dukeubuntu-tc",
     "parsecursor": true,
-    "paste": true,
     "relativeruler": true,
     "savecursor": true,
     "saveundo": true,
+    "softwrap": true,
     "tabsize": 2,
     "tabstospaces": true
 }
