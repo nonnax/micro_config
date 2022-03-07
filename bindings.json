@@ -1,6 +1,6 @@
 {
     "Alt-/": "lua:comment.comment",
-    "Alt-C": "command:textfilter micro_capitalize_words.rb",
+    "Alt-!": "command:textfilter micro_capitalize_words.rb",
     "Alt-T": "command:textfilter title",
     "Alt-Tab": "command:textfilter micro_capture.rb",
     "Alt-a": "lua:snippets.Accept",
