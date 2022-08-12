@@ -2,13 +2,26 @@
     "*.cr": {
         "tabsize": 2
     },
+    "*.lua": {
+        "tabsize": 1
+    },
+    "*.py": {
+        "tabsize": 2
+    },
     "*.rb": {
         "tabsize": 2
     },
     "autosave": 8,
-    "colorscheme": "pinkcula",
+    "colorscheme": "dukeubuntu-tc",
+    "diffgutter": true,
+    "hlsearch": true,
     "parsecursor": true,
+    "pluginchannels": [
+        "https://raw.githubusercontent.com/micro-editor/plugin-channel/master/channel.json"
+    ],
+    "pluginrepos": [],
     "relativeruler": true,
+    "rmtrailingws": true,
     "savecursor": true,
     "saveundo": true,
     "softwrap": true,

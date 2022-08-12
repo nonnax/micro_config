@@ -1,0 +1,50 @@
+filetype: smalltalk
+
+detect:
+    filename: "(^|\\.|/)(st)$"
+    # header: "^.LOG"
+
+rules:
+      # Numbers
+    # - type: "^[0-9]+.*\\:[0-9]+\\b"
+    # - statement: "^\\w+.*"
+    # - statement: "(([0-9]{1,2}r)?[0-9A-F]+)"\
+    # - type: "#(([a-zA-Z][a-zA-Z0-9:]*)|[+\\-\\/\\*~&lt;&gt;=@%|&amp;?!.,:;^]+)"
+    - statement: "([[:space:]])+([a-z][a-zA-Z0-9]+)(:|\\b)\\b"
+
+    - keywords: "^\\s*([a-zA-Z][a-zA-Z0-9]+)\\b"
+    # - type: "\\$(&lt;[0-F]+&gt;|.)")
+    # - special: "\\b([a-zA-Z][a-zA-Z0-9]*:)|[+\\-\\/\\*~&lt;&gt;=@%|&amp;?!.,:;^]+\\b"
+    # - special: "\\w+\\s([a-zA-Z][a-zA-Z0-9]*:)\\b|[+\\-\\/\\*~<>=@%|\\;?!.,:;^]+\\b"
+
+  # special words
+    # - keywords: "\\b(true|false|nil|thisContext)\\b"
+    - keywords: "\\b(new|true|false|nil|thisContext)\\b"
+    # - special: "\\'.+\\'"
+    # - statement: "^[[:space:]]*[A-Z][a-z]+\\s"
+    # - special: ":\\b[\\sa-zA-Z][a-z]+\\s"
+    # - statement: "\\b[A-Z][a-z]+\\b"
+    
+    # - statement: "[^]\\s[a-z]+[\\w]*[\\:]?"
+    - type: "\\'.*?\\'"
+    # - type: "\\=.*?\\="
+    # - type: "\\b[\\w+]+@([\\w+]+\\.)+[\\w+]{2,4}\\b"
+    - special: "(\\{|\\}|\\(|\\)|\\;|\\]|\\[|`|\\\\|\\$|<|>|!|=|&|\\\\|\\.|\\*|\\/|\\-|\\+)"
+    - comment: "\\<.*?\\>"
+
+    # - statement: "\\b(sell)\\b:"
+    # - type: "\\b(buy)\\b:"
+# - highlights a section
+    - comment: "\\\"[[:space].\\n]*?\\\""
+    
+    # - special: "[\\|\\[].*?\\|"
+# - highlights a line
+    # - special: "(^|\\s)\\+.+"
+    # - special: "\\s\\+{2}.+$"
+    
+# - dims a line
+    - comment: 
+        start: "(^|\\s)\\\""
+        end: "\\\""
+        rules:
+            - todo: "(TODO|XXX|FIXME):?"

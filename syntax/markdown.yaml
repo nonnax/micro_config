@@ -33,7 +33,13 @@ rules:
 
       # links
     - constant: "\\[[^]]+\\]"
+    - constant: "\\{[^}]+\\}"
     - constant: "\\[([^][]|\\[[^]]*\\])*\\]\\([^)]+\\)"
+    - constant.number:
+        start: "{"
+        end: "}"
+        skip: "\\\\."
+        rules: []
 
       # images
     - underlined: "!\\[[^][]*\\](\\([^)]+\\)|\\[[^]]+\\])"

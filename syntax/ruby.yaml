@@ -1,7 +1,7 @@
 filetype: ruby
 
 detect: 
-    filename: "\\.(rb|ru|rake|gemspec)$|^(Gemfile|config.ru|Rakefile|Capfile|Vagrantfile|Guardfile|Appfile|Fastfile|Pluginfile|Podfile)$"
+    filename: "\\.(rb|pk|ru|rake|gemspec)$|^(Gemfile|config.ru|Rakefile|Capfile|Vagrantfile|Guardfile|Appfile|Fastfile|Pluginfile|Podfile)$"
     header: "^#!.*/(env +)?m?ruby( |$)"
 
 rules:
