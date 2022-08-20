@@ -11,8 +11,7 @@
     "*.rb": {
         "tabsize": 2
     },
-    "autosave": 8,
-    "colorscheme": "dukeubuntu-tc",
+    "colorscheme": "molokai-dark",
     "diffgutter": true,
     "hlsearch": true,
     "parsecursor": true,
