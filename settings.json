@@ -11,7 +11,7 @@
     "*.rb": {
         "tabsize": 2
     },
-    "colorscheme": "nord-16",
+    "colorscheme": "molokai-dark",
     "diffgutter": true,
     "hlsearch": true,
     "parsecursor": true,
