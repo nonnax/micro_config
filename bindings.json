@@ -11,6 +11,7 @@
     "Alt-d": "lua:snippets.Cancel",
     "Alt-e": "command:erb",
     "Alt-f": "command:textfilter fold -s",
+    "Alt-i": "command:textfilter micro_emmet.rb",
     "Alt-j": "command:textfilter micro_join_lines.rb",
     "Alt-l": "command:textfilter micro_lower.rb",
     "Alt-m": "lua:snippets.Next",
@@ -18,6 +19,7 @@
     "Alt-q": "ToggleMacro",
     "Alt-s": "command:textfilter xsel",
     "Alt-t": "ToggleMacro",
+    "Alt-u": "command:textfilter micro_upper.rb",
     "Alt-v": "command:textfilter micro_split_lines.rb",
     "Alt-w": "lua:snippets.Next",
     "AltLeft": "WordLeft",
@@ -36,10 +38,10 @@
     "CtrlUnderscore": "lua:comment.comment",
     "CtrlUp": "ParagraphPrevious",
     "Esc": "Quit",
+    "F1": "command:fexec ri {w}",
     "F10": "command:fexec cat {w}",
     "F2": "command:nextBookmark",
     "F4": "command:jumptag",
-    "F8": "command:fexec ri {w}",
     "F9": "command:textfilter ls -t",
     "Shift-F2": "command:prevBookmark"
 }
