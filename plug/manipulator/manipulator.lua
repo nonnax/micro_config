@@ -68,8 +68,8 @@ function manipulate(regex, manipulator, num)
         end
     end
 
-    --v.Cursor:Relocate()
-    --v.Cursor.LastVisualX = v.Cursor:GetVisualX()
+    v.Cursor:Relocate()
+    v.Cursor.LastVisualX = v.Cursor:GetVisualX()
 end
 
 
@@ -147,7 +147,7 @@ function init()
     config.MakeCommand("squote", function() manipulate(".*", "'%1'", 1) end, config.NoComplete)
     config.MakeCommand("angle", function() manipulate(".*", "<%1>", 1) end, config.NoComplete)
     config.MakeCommand("erb", function() manipulate(".*", "<% %1 %>", 1) end, config.NoComplete)
-    config.MakeCommand("htmltag", function() manipulate(".*", "<htmltag>\n%1</htmltag>", 1) end, config.NoComplete)
+    config.MakeCommand("enclose", function() manipulate(".*", "<enclose>%1</enclose>", 1) end, config.NoComplete)
     config.MakeCommand("base64dec", base64dec, config.NoComplete)
     config.MakeCommand("base64enc", base64enc, config.NoComplete)
     config.MakeCommand("decNum", decNum, config.NoComplete)

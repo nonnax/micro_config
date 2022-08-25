@@ -30,18 +30,19 @@
 # </ul>
 #
 def enclose(tag, tabstop: 0, &block)
+
   tagname = tag.scan(/\w+/).first
   tag =
     tag
-    .sub(/(?:#{tagname})\#(\w+)/, tagname+' id="\1"')
-    .sub(/(?:#{tagname})\.(\w+)/, tagname+' class="\1"')
+    .sub(/\#(\w+)/, ' id="\1"')
+    .sub(/\.(\w+)/, ' class="\1"')
 
   inside = block.call if block
 
   tabs = '  ' * tabstop
 
-  s = format("\n%s<%s>", tabs, tag)
-  s << format("%s%s\n", tabs * 2, inside) if block && !inside.strip.empty?
+  s =  format("\n%s<%s>",  tabs, tag)
+  s << format("%s%s\n",    tabs * 2, inside) if block && !inside.strip.empty?
   s << format("\n%s</%s>", tabs, tagname)
   s
 end
