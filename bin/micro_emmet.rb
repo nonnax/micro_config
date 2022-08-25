@@ -59,7 +59,7 @@ def process(cmd = '')
       acc = enclose(tag, tabstop:) { acc }
       acc *= n.to_i
     end
-    .gsub(/\n{1,}/, "\n")
+    .gsub(/\n+/, "\n")
 end
 
 puts process(gets)

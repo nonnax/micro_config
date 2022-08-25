@@ -28,7 +28,7 @@
     "Ctrl-k": "CursorUp",
     "Ctrl-l": "CursorRight",
     "Ctrl-r": "lua:initlua.gorun",
-    "Ctrl-t": "command:textfilter calcts.rb",
+    "Ctrl-t": "command:enclose",
     "Ctrl-u": "ToggleMacro",
     "Ctrl-z": "Undo",
     "CtrlDown": "ParagraphNext",
