@@ -1,61 +1,44 @@
 #!/usr/bin/env ruby
-# Id$ nonnax 2022-08-24 21:44:06
+# Id$ nonnax 2022-08-25 10:03:28
 
-class Dive
-  attr :arr
+current=nil
+@a=%w[a b c]
 
-  def initialize(*a)
-    @arr=a
-    @level=-1
-  end
-
-  def tab(&block)
-    (" "*@level)+block.call if @level>=0
-  end
-
-  def enclose(tag, &block)
-      tag=tag.gsub(/\#(\w+)/, ' id="\1"').gsub(/\.(\w+)/, ' class="\1"')
-
-      str=''
-      str<< tab{"<%s>\n" % tag}
-      str<< tab{block.call} if block
-      str<<"\n"
-      str<< tab{"</%s>" % tag.scan(/\w+/).first}
-  end
-
-  def dive()
-    @level+=1
-    return if arr.empty?
-    current=arr.shift
-    s=enclose(current){ dive().to_s }
-    @level-=2
-    @level=[@level, 0].max
-    s
-  end
-
-  def repeat(args)
-   @arr_copy=arr.dup
-    tag, repeat = args.split(/\*/)
-    tag=tag.gsub(/\#(\w+)/, ' id="\1"').gsub(/\.(\w+)/, ' class="\1"')
-
-    res=repeat.to_i.times.map do |i|
-      s="<%s></%s>" % [tag, tag.scan(/\w+/).first]
-    end
-  end
-
-  def to_s
-    @output
-  end
+def enclose(tag, tabstop:0, &block)
+  inside=block.call if block
+  tag=tag.gsub(/\#(\w+)/, ' id="\1"').gsub(/\.(\w+)/, ' class="\1"')
+  tagname=tag.scan(/\w+/).first
+  # "<%s>%s</%s>" % [tag, inside, tag]
+  tabs="  "*tabstop
+  s="\n#{tabs}<%s>" % tag
+  s<<"#{tabs*2}%s\n" % inside if block && !inside.strip.empty?
+  s<<"\n#{tabs}</%s>" % tagname
+  s
 end
 
-template = gets
-arr=template.split(/>/)
-d=Dive.new(*arr)
-
-if arr.first.match?(/\d+/)
-  digit=arr.first.match(/\d+/)[2]
-  puts d.repeat(template)
-else
-  puts d.dive()
+def process(a="", &block)
+  arg=a.chomp.split(/>/)
+  # res=arg.dup.reverse.inject(str) do |acc, e|
+  acc=''
+  arg.dup.reverse.map.with_index do |e, i|
+    tag, n = e.split(/\*/)
+    n ||= 1
+    tabstop=arg.size-i-1
+    acc=enclose(tag, tabstop:){acc}
+    acc=acc*n.to_i
+  end
+  .last
+  .gsub(/\n{1,}/,"\n")
 end
 
+# pop c
+# process c
+# return "<c></c>"
+# pop b
+# process(b){doc}
+# return b
+
+# puts process(@a)
+a=gets
+puts res=process(a)
+puts res
