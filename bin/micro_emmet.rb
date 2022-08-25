@@ -1,37 +1,65 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 # Id$ nonnax 2022-08-25 10:03:28
 
-def enclose(tag, tabstop:0, &block)
+# = emmet.rb
+#  dynamically parses a command to produce output depending on what you type in the abbreviation
+#
+# ```
+# echo "ul>li*2>a" | emmet.rb
+#
+# output 1:
+# <ul>
+#   <li>
+#   </li>
+# </ul>
+#
+# echo "ul#container>li.item*2>a.link href='http://example.com'" | emmet.rb
+#
+# output 2:
+#
+# <ul id="container">
+#   <li class="item">
+#     <a class="link" href='http://example.com'>
+#     </a>
+#   </li>
+#   <li class="item">
+#     <a class="link" href='http://example.com'>
+#     </a>
+#   </li>
+# </ul>
+#
+def enclose(tag, tabstop: 0, &block)
+  tagname = tag.scan(/\w+/).first
   tag =
-  tag
-  .gsub(/\#(\w+)/, ' id="\1"')
-  .gsub(/\.(\w+)/, ' class="\1"')
+    tag
+    .sub(/(?:#{tagname})\#(\w+)/, tagname+' id="\1"')
+    .sub(/(?:#{tagname})\.(\w+)/, tagname+' class="\1"')
 
-  tagname=tag.scan(/\w+/).first
-  inside=block.call if block
+  inside = block.call if block
 
-  tabs="  "*tabstop
+  tabs = '  ' * tabstop
 
-  s="\n#{tabs}<%s>" % tag
-  s<<"#{tabs*2}%s\n" % inside if block && !inside.strip.empty?
-  s<<"\n#{tabs}</%s>" % tagname
+  s = format("\n%s<%s>", tabs, tag)
+  s << format("%s%s\n", tabs * 2, inside) if block && !inside.strip.empty?
+  s << format("\n%s</%s>", tabs, tagname)
   s
 end
 
-def process(a="", &block)
-  arg=a.chomp.split(/>/)
-  i=0
+def process(cmd = '')
+  i = 0
+  arg = cmd.chomp.split(/>/)
+
   arg
-  .dup
-  .reverse
-  .inject("") do |acc, e|
-    tag, n = e.split(/\*/)
-    n ||= 1
-    tabstop=arg.size-(i=i.succ)
-    acc=enclose(tag, tabstop:){ acc }
-    acc=acc*n.to_i
-  end
-  .gsub(/\n{1,}/,"\n")
+    .reverse
+    .inject('') do |acc, e|
+      tag, n = e.split(/\*/)
+      n ||= 1
+      tabstop = arg.size - (i = i.succ)
+      acc = enclose(tag, tabstop:) { acc }
+      acc *= n.to_i
+    end
+    .gsub(/\n{1,}/, "\n")
 end
 
 puts process(gets)
