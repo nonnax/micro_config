@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
 # Id$ nonnax 2022-08-25 10:03:28
 
 # = emmet.rb
@@ -29,13 +30,19 @@
 #   </li>
 # </ul>
 #
-def enclose(tag, tabstop: 0, &block)
 
+def sub_labels(tag, marker, name)
+  tag.sub(/#{marker}([#{marker}\w]+)/) do |matched|
+    " #{name}=\"%s\"" % matched.strip.split(/#{marker}/).reject(&:empty?).join(' ')
+  end
+end
+
+def enclose(tag, tabstop: 0, &block)
   tagname = tag.scan(/\w+/).first
   tag =
     tag
-    .sub(/\#(\w+)/, ' id="\1"')
-    .sub(/\.(\w+)/, ' class="\1"')
+    .then { |tag| sub_labels(tag, '\#', 'id') }
+    .then { |tag| sub_labels(tag, '\.', 'class') }
 
   inside = block.call if block
 

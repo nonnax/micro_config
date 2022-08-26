@@ -33,6 +33,7 @@
     "CtrlH": "CursorLeft",
     "CtrlShift-End": "command:textfilter micro_emmet.rb",
     "CtrlShift-F2": "command:clearBookmarks",
+    "CtrlShift-Home": "command:textfilter micro_emmet_css.rb",
     "CtrlUnderscore": "lua:comment.comment",
     "CtrlUp": "ParagraphPrevious",
     "Esc": "Quit",
