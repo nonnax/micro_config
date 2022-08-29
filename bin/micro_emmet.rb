@@ -1,35 +1,13 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
+# Id$ nonnax 2022-08-25 22:21:19
 
-# Id$ nonnax 2022-08-25 10:03:28
+# require 'fiber_scheduler'
 
-# = emmet.rb
-#  dynamically parses a command to produce output depending on what you type in the abbreviation
-#
-# ```
-# echo "ul>li*2>a" | emmet.rb
-#
-# output 1:
-# <ul>
-#   <li>
-#   </li>
-# </ul>
-#
-# echo "ul#container>li.item*2>a.link href='http://example.com'" | emmet.rb
-#
-# output 2:
-#
-# <ul id="container">
-#   <li class="item">
-#     <a class="link" href='http://example.com'>
-#     </a>
-#   </li>
-#   <li class="item">
-#     <a class="link" href='http://example.com'>
-#     </a>
-#   </li>
-# </ul>
-#
+# def enclose(tag, tabstops, &block)
+   # s =  "\n%s<%s>"  % [' '*tabstops, tag]
+   # s << "%s%s"      % [' '*tabstops, block.call ] if block
+   # s << "\n%s</%s>" % [' '*tabstops, tag]
+# end
 
 def sub_labels(tag, marker, name)
   tag.sub(/#{marker}([#{marker}\w]+)/) do |matched|
@@ -54,20 +32,37 @@ def enclose(tag, tabstop: 0, &block)
   s
 end
 
-def process(cmd = '')
-  i = 0
-  arg = cmd.chomp.split(/>/)
+def process(arr, size)
+   return "" if arr.empty?
+   v = arr.pop
+   tabstop=size-arr.size
 
-  arg
-    .reverse
-    .inject('') do |acc, e|
-      tag, n = e.split(/\*/)
-      n ||= 1
-      tabstop = arg.size - (i = i.succ)
-      acc = enclose(tag, tabstop:) { acc }
-      acc *= n.to_i
-    end
-    .gsub(/\n+/, "\n")
+   tag, n = v.split(/\*/)
+   s = ''
+   if tag.match?(/\+/)
+    head, tag = tag.split(/\+/)
+    s<<enclose(head, tabstop:)
+   end
+
+   n ||= 1
+
+   # s =  "\n%s<%s>"  % [' '*tabstops, tag]
+   # s << "%s%s"      % [' '*tabstops, process(arr,size) ]
+   # s << "\n%s</%s>" % [' '*tabstops, tag]
+
+   s<<enclose(tag, tabstop:){process(arr,size)}
+
+   n
+   .to_i
+   .times
+   .map{ s }
+   .join('')
 end
 
-puts process(gets)
+def run(cmd)
+  process(cmd.reverse, cmd.size)
+end
+
+# cmd=list=('a'..'z').to_a
+cmd=%w[a#cointainer b.content*3 c d e.box f.item*2 g]
+puts run( gets.split(/\>/) )
