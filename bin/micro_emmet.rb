@@ -65,4 +65,4 @@ end
 
 # cmd=list=('a'..'z').to_a
 cmd=%w[a#cointainer b.content*3 c d e.box f.item*2 g]
-puts run( gets.split(/\>/) )
+puts run( gets.chomp.split(/\>/) )

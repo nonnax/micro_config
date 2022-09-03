@@ -1,8 +1,9 @@
 {
     "\u003cCtrl-p\u003e\u003cCtrl-p\u003e": "PlayMacro",
-    "\u003cCtrl-y\u003e\u003cCtrl-y\u003e": "CopyLine|Copy",
+    "\u003cCtrl-y\u003e\u003cCtrl-p\u003e": "CopyLine,Paste",
     "Alt-!": "command:textfilter micro_capitalize_words.rb",
     "Alt-/": "lua:comment.comment",
+    "Alt-Q": "PlayMacro",
     "Alt-T": "command:textfilter title",
     "Alt-Tab": "lua:snippets.Insert",
     "Alt-a": "lua:snippets.Accept",
@@ -16,7 +17,6 @@
     "Alt-p": "command:textfilter pwd",
     "Alt-q": "ToggleMacro",
     "Alt-s": "command:textfilter xsel",
-    "Alt-t": "ToggleMacro",
     "Alt-u": "command:textfilter micro_upper.rb",
     "Alt-v": "command:textfilter micro_split_lines.rb",
     "Alt-w": "lua:snippets.Next",
@@ -28,12 +28,11 @@
     "Ctrl-l": "CursorRight",
     "Ctrl-r": "lua:initlua.gorun",
     "Ctrl-t": "command:enclose",
-    "Ctrl-u": "ToggleMacro",
+    "Ctrl-x": "CopyLine,SelectLine",
     "Ctrl-z": "Undo",
     "CtrlDown": "ParagraphNext",
     "CtrlH": "CursorLeft",
     "CtrlShift-End": "command:textfilter micro_emmet.rb",
-    "CtrlShift-F2": "command:clearBookmarks",
     "CtrlShift-Insert": "command:textfilter micro_emmet_css.rb",
     "CtrlUnderscore": "lua:comment.comment",
     "CtrlUp": "ParagraphPrevious",
@@ -42,6 +41,5 @@
     "F10": "command:fexec cat {w}",
     "F2": "command:nextBookmark",
     "F4": "command:jumptag",
-    "F9": "command:textfilter ls -t",
-    "Shift-F2": "command:prevBookmark"
+    "F9": "command:textfilter ls -t"
 }
