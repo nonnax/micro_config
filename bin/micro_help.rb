@@ -7,7 +7,7 @@ f=File.expand_path "~/.config/micro/bindings.json"
 bindings=JSON.parse(File.read(f))
 arr=[]
 bindings.each do |k, v|
-  arr<<[k, v.split.last.gsub(/.rb$/, '')]
+  arr<<[k, v.gsub(/.rb$/, '')]
 end
 puts arr.sort.to_table(ljust: [1])
 

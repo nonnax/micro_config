@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # Id$ nonnax 2022-09-04 15:43:48
-keywords=gets.split
+command=gets
+keywords=command.split
 flag = keywords.detect{|k| k.match?(/^-/)}
 
 def bounded(rx); /^#{rx}$/ end
@@ -12,8 +13,8 @@ when /--env/
   keywords.delete(flag)
   kw=keywords.shift
   date, time = time_now.split(/\./)
-  puts '#/usr/bin/env %s' % [kw || 'ruby']
-  puts "Id$ nonnax %s %s" % [date, time]
+  puts '#!/usr/bin/env %s' % [kw || 'ruby']
+  puts "#Id$ nonnax %s %s" % [date, time]
 
 when /--wup/, bounded(/-w/)
   keywords.delete(flag)
@@ -25,10 +26,15 @@ when /--wup/, bounded(/-w/)
   ---
   ___
 
-when /^-tt/, /--time/
+when /--time/, bounded(/-tt/)
   puts time_now.split(/\./).pop
 
-when bounded(/-t/), /--date/
+when /--date/, bounded(/-t/)
   puts time_now
 
+when /--emmet/, bounded(/-m/)
+  print IO.popen("echo \"#{command.sub(/^.+?\s/,'')}\" | micro_emmet.rb", &:read)
+else
+  # restore unprocessed command
+  print command
 end

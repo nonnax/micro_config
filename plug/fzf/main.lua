@@ -8,7 +8,7 @@ local buffer = import("micro/buffer")
 function fzf(bp)
     if shell.TermEmuSupported then
         -- local err = shell.RunTermEmulator(bp, "fzf", false, true, fzfOutput, {bp})
-        local output, err = shell.RunInteractiveShell("fzf", false, true)
+        local output, err = shell.RunInteractiveShell("fzf --preview='ls -l {} && echo \"\n\"  && bat -p {} --color=always'", false, true)
         if err ~= nil then
             micro.InfoBar():Error(err)
         else

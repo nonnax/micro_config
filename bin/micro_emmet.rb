@@ -1,14 +1,6 @@
 #!/usr/bin/env ruby
 # Id$ nonnax 2022-08-25 22:21:19
 
-# require 'fiber_scheduler'
-
-# def enclose(tag, tabstops, &block)
-   # s =  "\n%s<%s>"  % [' '*tabstops, tag]
-   # s << "%s%s"      % [' '*tabstops, block.call ] if block
-   # s << "\n%s</%s>" % [' '*tabstops, tag]
-# end
-
 def sub_labels(tag, marker, name)
   tag.sub(/#{marker}([#{marker}\w]+)/) do |matched|
     " #{name}=\"%s\"" % matched.strip.split(/#{marker}/).reject(&:empty?).join(' ')
@@ -46,11 +38,7 @@ def process(arr, size)
 
    n ||= 1
 
-   # s =  "\n%s<%s>"  % [' '*tabstops, tag]
-   # s << "%s%s"      % [' '*tabstops, process(arr,size) ]
-   # s << "\n%s</%s>" % [' '*tabstops, tag]
-
-   s<<enclose(tag, tabstop:){process(arr,size)}
+   s << enclose(tag, tabstop:){process(arr,size)}
 
    n
    .to_i
@@ -63,6 +51,4 @@ def run(cmd)
   process(cmd.reverse, cmd.size)
 end
 
-# cmd=list=('a'..'z').to_a
-cmd=%w[a#cointainer b.content*3 c d e.box f.item*2 g]
 puts run( gets.chomp.split(/\>/) )
