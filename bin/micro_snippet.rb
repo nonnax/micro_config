@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 # Id$ nonnax 2022-09-04 15:43:48
+# consolidated micro textfilter command processor
+#
 command=gets
 keywords=command.split
 flag = keywords.detect{|k| k.match?(/^-/)}
@@ -34,6 +36,11 @@ when /--date/, bounded(/-t/)
 
 when /--emmet/, bounded(/-m/)
   print IO.popen("echo \"#{command.sub(/^.+?\s/,'')}\" | micro_emmet.rb", &:read)
+
+when /--bars/, bounded(/-b/)
+  DENSITY_SIGNS = ['░', '▒', '▓', '█'].reverse.freeze
+  puts DENSITY_SIGNS.map{|e| e*3}.join
+
 else
   # restore unprocessed command
   print command

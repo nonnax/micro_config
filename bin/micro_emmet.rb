@@ -19,7 +19,11 @@ def enclose(tag, tabstop: 0, &block)
   tabs = '  ' * tabstop
 
   s =  format("\n%s<%s>",  tabs, tag)
-  s << format("%s%s\n",    tabs * 2, inside) if block && !inside.strip.empty?
+  s << if (block && !inside.strip.empty?)
+    format("%s%s",    tabs * 2, inside)
+  else
+    "text"
+  end
   s << format("\n%s</%s>", tabs, tagname)
   s
 end
