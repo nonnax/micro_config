@@ -11,7 +11,7 @@
     "*.rb": {
         "tabsize": 2
     },
-    "colorscheme": "molokaia-dark",
+    "colorscheme": "dukedark-tc",
     "diffgutter": true,
     "hlsearch": true,
     "parsecursor": true,
@@ -23,6 +23,7 @@
     "rmtrailingws": true,
     "savecursor": true,
     "saveundo": true,
+    "softwrap": true,
     "tabsize": 2,
     "tabstospaces": true
 }

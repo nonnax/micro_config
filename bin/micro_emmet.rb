@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env -S ruby --disable=gems --jit
 # Id$ nonnax 2022-08-25 22:21:19
 
 def sub_labels(tag, marker, name)

@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env -S ruby --disable=gems
 # Id$ nonnax 2022-09-04 15:43:48
 # consolidated micro textfilter command processor
 #

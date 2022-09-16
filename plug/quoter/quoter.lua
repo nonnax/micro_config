@@ -13,7 +13,8 @@ local quotePairs = {
   {"=","="}, {"|","|"},
   {"%","%"}, {"/","/"},
   {"*","*"}, {"~","~"},
-  {":",":"}, {"?","?"}
+  {":",":"}, {"?","?"},
+  {"^","^"}
 }
 
 function init()
@@ -37,6 +38,14 @@ function preRune(bp, r)
 end
 
 function quote(bp, open, close)
+		local realPairs = {
+				['^']={"<div>", "</div>"}
+		}
+		if open=='^' then
+				 local marker=open
+			  open, close =realPairs[marker][1], realPairs[marker][2]
+		end
+
 	if not (-bp.Cursor.CurSelection[1]):GreaterThan(-bp.Cursor.CurSelection[2]) then -- is the first selection point later in the document than the second?
 		bp.Buf:Insert(-bp.Cursor.CurSelection[1], open)  -- right order
 		bp.Buf:Insert(-bp.Cursor.CurSelection[2], close) -- this happens almost always

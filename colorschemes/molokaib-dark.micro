@@ -1,4 +1,4 @@
-color-link default "#F8F8F2,#272822"
+color-link default "#F8F8F2,#abdc6"
 color-link comment "#005F5F"
 color-link identifier "#0000FF"
 color-link constant "#AE81FF"

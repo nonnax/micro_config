@@ -1,8 +1,8 @@
 filetype: ruby
 
-detect: 
+detect:
     filename: "\\.(rb|pk|ru|rake|gemspec)$|^(Gemfile|config.ru|Rakefile|Capfile|Vagrantfile|Guardfile|Appfile|Fastfile|Pluginfile|Podfile)$"
-    header: "^#!.*/(env +)?m?ruby( |$)"
+    header: "^#!.*/(env +)?m?ruby"
 
 rules:
     - comment.bright:
