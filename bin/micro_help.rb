@@ -1,3 +1,4 @@
+#!/usr/bin/env -S ruby
 #!/usr/bin/env -S ruby --disable=gems
 # Id$ nonnax 2022-02-12 12:34:38 +0800
 require 'json'

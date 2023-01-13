@@ -58,6 +58,8 @@ rules:
     - constant.string: "%[qw]\\{[^}]*\\}|%[qw]\\([^)]*\\)|%[qw]<[^>]*>|%[qw]\\[[^]]*\\]|%[qw]\\$[^$]*\\$|%[qw]\\^[^^]*\\^|%[qw]![^!]*!"
     - constant.string.exec: "%[x]\\{[^}]*\\}|%[x]\\([^)]*\\)|%[x]<[^>]*>|%[x]\\[[^]]*\\]|%[x]\\$[^$]*\\$|%[x]\\^[^^]*\\^|%[x]![^!]*!"
     - constant.bool: "\\b(true|false|nil|TRUE|FALSE|NIL)\\b"
+    - constant.string: "\\b[A-Z_a-z0-9]+:"
+    - constant.string: ":[A-Z_a-z0-9]+\\b"
     - symbol.operator: "[-+/*=<>!~%&|^]|\\b:"
     - symbol.brackets: "([(){}]|\\[|\\])"
     - constant.macro:

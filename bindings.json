@@ -27,7 +27,7 @@
     "Alt-h": "SelectLine",
     "Alt-j": "command:textfilter micro_join_lines.rb",
     "Alt-l": "SelectToEndOfLine",
-    "Alt-m": "lua:snippets.Next",
+    "Alt-m": "command:mustache",
     "Alt-p": "command:textfilter pwd",
     "Alt-q": "ToggleMacro",
     "Alt-s": "SelectToStartOfTextToggle,command:textfilter micro_emmet.rb",

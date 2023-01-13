@@ -9,7 +9,8 @@
         "tabsize": 2
     },
     "*.rb": {
-        "tabsize": 2
+        "tabsize": 1,
+        "tabstospaces": true
     },
     "colorscheme": "dukedark-tc",
     "diffgutter": true,

@@ -2,20 +2,22 @@
 local config = import("micro/config")
 local shell = import("micro/shell")
 
-function init()
+function init(bp)
   -- true means overwrite any existing binding to Ctrl-r
   -- this will modify the bindings.json file
   config.TryBindKey("Ctrl-r", "lua:initlua.gorun", true)
+
 end
 
 function gorun(bp)
   local buf = bp.Buf
-  local c = bp.Cursor  
-  if buf:FileType() == "lua" then
+  local c = bp.Cursor
 
-    if not c:HasSelection() then
-			c:SelectWord()
-		end
+  if not c:HasSelection() then
+    c:SelectWord()
+  end
+
+  if buf:FileType() == "lua" then
 
 --		if c:HasSelection() then
 --		sel = c:GetSelection()

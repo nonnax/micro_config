@@ -1,7 +1,7 @@
 filetype: erb
 
 detect:
-    filename: "(\\.erb$|\\.rhtml|\\.etlua|\\.mustache|\\.mote$)$"
+    filename: "(\\.erb$|\\.rhtml|\\.etlua|\\.mustache|\\.lp|\\.cgi|\\.mote$)$"
 
 rules:
     - error: "<[^!].*?>"
